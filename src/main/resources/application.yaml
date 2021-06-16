@@ -1,0 +1,8 @@
+server:
+  port: 9999
+spring:
+  data:
+    mongodb:
+      auto-index-creation: true
+      uri: mongodb+srv://longdt1:TBVlaF6c4KyPsiaX@cluster0.gpls0.mongodb.net/vocabulary?retryWrites=true&w=majority
+      field-naming-strategy: org.springframework.data.mapping.model.SnakeCaseFieldNamingStrategy
