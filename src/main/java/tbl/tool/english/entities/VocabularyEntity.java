@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -16,7 +17,9 @@ public class VocabularyEntity {
     @Id
     @Field("_id")
     private ObjectId id;
+    @Indexed(name = "i_en")
     private String en;
+    @Indexed(name = "i_vn")
     private String vn;
     private String labelCode;
 }
