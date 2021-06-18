@@ -17,9 +17,7 @@ public class VocabularyEntity {
     @Id
     @Field("_id")
     private ObjectId id;
-    @Indexed(name = "i_en")
     private String en;
-    @Indexed(name = "i_vn")
     private String vn;
     private String labelCode;
 }
