@@ -2,6 +2,9 @@ package tbl.tool.english;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class VocabularyBeApplication {
@@ -10,4 +13,16 @@ public class VocabularyBeApplication {
 		SpringApplication.run(VocabularyBeApplication.class, args);
 	}
 
+	private static final class WebMvcConfigurerAdapterExtension implements WebMvcConfigurer {
+		@Override
+		public void addCorsMappings(CorsRegistry registry) {
+			registry.addMapping("/**").allowedOrigins("*")
+					.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH");
+		}
+	}
+
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurerAdapterExtension();
+	}
 }

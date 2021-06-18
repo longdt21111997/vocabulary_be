@@ -18,6 +18,7 @@ import java.util.List;
 public class VocabularyResource {
     private final VocabularyService vocabularyService;
 
+    @CrossOrigin
     @GetMapping
     public ResponseEntity<VTResponse<List<VocabularyDTO>>> findVocabulary(
             @RequestParam(name = "en", required = false) String enWord,
@@ -27,11 +28,13 @@ public class VocabularyResource {
         return new ResponseEntity<>(vocabularyService.findVocabulary(enWord, vnWord, limit, skip), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<VTResponse<Void>> insertVocabulary(@RequestBody InsertVocabularyVm vm) {
         return new ResponseEntity<>(vocabularyService.insertVocabulary(vm), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PutMapping("/{id}")
     public ResponseEntity<VTResponse<Void>> updateVocabularyById(
             @PathVariable(name = "id") String id,
@@ -39,6 +42,7 @@ public class VocabularyResource {
         return new ResponseEntity<>(vocabularyService.updateVocabulary(id, vm), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     public ResponseEntity<VTResponse<Void>> deleteVocabularyById(@PathVariable(name = "id") String id) {
         return new ResponseEntity<>(vocabularyService.deleteVocabulary(id), HttpStatus.OK);
